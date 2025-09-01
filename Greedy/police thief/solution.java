@@ -45,84 +45,41 @@ Rate This Challenge:
     
 More
  
-i+j<n && 
-1
+
 import java.io.*;
-2
 import java.util.*;
-3
-​
-4
 public class Solution {
-5
-​
-6
     public static void main(String[] args) {
-7
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
-8
         Scanner sc=new Scanner(System.in);
-9
         int count=0;
-10
         int n=sc.nextInt();
-11
         char arr[]=new char[n];
-12
         for(int i=0;i<n;i++)
-13
                 arr[i]=sc.next().charAt(0);
-14
         int k=sc.nextInt();
-15
-        
-16
-        
-17
         for(int i=0;i<n;i++){
-18
             if(arr[i]=='P'){
-19
                 for(int j=1;j<=k;j++){
-20
                     if(i+j<n && arr[i+j]=='T'){
-21
                         count++;
-22
                         arr[i+j]='C';
-23
                         break;
-24
                 }
-25
                 }
-26
             }
-27
             else if(arr[i]=='T'){
-28
                 for(int j=1;j<=k;j++){
-29
                     if(i+j<n && arr[i+j]=='P'){
-30
                         count++;
-31
                         arr[i+j]='C';
-32
                         break;
-33
                     }
-34
                 }
-35
             }
-36
         }
-37
         System.out.print("Maximum thieves caught: "+count);
-38
     }
-39
 }
 
 
