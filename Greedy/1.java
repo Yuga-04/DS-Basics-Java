@@ -124,6 +124,52 @@ public class Solution {
     }
 39
 }
+
+
+
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+        int count=0,p=0,t=0,m=0,l=0;
+        int n=sc.nextInt();
+        char arr[]=new char[n];
+        List<Integer> pr=new ArrayList<>();
+        List<Integer> tr=new ArrayList<>();
+        for(int i=0;i<n;i++){
+                arr[i]=sc.next().charAt(0);
+                if(arr[i]=='P')
+                    pr.add(i);
+                else
+                    tr.add(i);
+        }
+        int k=sc.nextInt();
+        
+        
+        int i=0,j=0;
+        while(i<pr.size() && j< tr.size()){
+            int prr=pr.get(i);
+            int trr=tr.get(j);
+            if(Math.abs(prr-trr)<=k){
+                count++;
+                i++;
+                j++;
+            }
+            else if(prr<trr){
+                i++;
+            }
+            else{
+                j++;
+            }
+        }
+        System.out.print("Maximum thieves caught: "+count);
+    }
+}
 Line: 20 Col: 33
 Run Code Submit CodeUpload Code as File 
 Test against custom input
