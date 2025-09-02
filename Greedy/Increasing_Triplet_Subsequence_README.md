@@ -56,22 +56,19 @@ Instead of storing all possible subsequences, we only track **two minimum number
 ```java
 class Solution {
     public boolean increasingTriplet(int[] nums) {
-        int min1 = Integer.MAX_VALUE; // smallest value
-        int min2 = Integer.MAX_VALUE; // second smallest value
+        int min1 = Integer.MAX_VALUE; 
+        int min2 = Integer.MAX_VALUE; 
 
         for (int num : nums) {
             if (num <= min1) {
-                // Case 1: found new smallest
                 min1 = num;
             } else if (num <= min2) {
-                // Case 2: found new second smallest
                 min2 = num;
             } else {
-                // Case 3: found num > min2 → triplet exists
                 return true;
             }
         }
-        return false; // no triplet found
+        return false;
     }
 }
 ```
