@@ -105,3 +105,54 @@ Output: **true**
 - Works well for large inputs up to `5 * 10^5`.
 
 ---
+
+## 📝 Code Implementation (Java)
+
+```java
+class Solution {
+    public boolean increasingTriplet(int[] nums) {
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                for (int k = j + 1; k < n; k++) {
+                    if (nums[i] < nums[j] && nums[j] < nums[k]) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+}
+```
+
+
+## Approach
+
+1. **Initialize two variables:**
+   - `min1` to track the smallest number encountered so far.
+   - `min2` to track the smallest number found that is larger than `min1`.
+   
+   Both are initialized to `Integer.MAX_VALUE` to ensure any number in the array can replace them initially.
+
+2. **Iterate through the array:**
+   - For each element `num` in `nums`:
+     - If `num` is **less than or equal to** `min1`, update `min1` to `num`.  
+       (This means you found a new smallest candidate.)
+     - Else if `num` is **less than or equal to** `min2`, update `min2` to `num`.  
+       (This means `num` can be the middle element of the triplet — bigger than `min1` but smaller than current `min2`.)
+     - Else, if `num` is greater than both `min1` and `min2`, return `true`.  
+       (You found the third element of the triplet increasing sequence.)
+
+3. If the loop completes without returning `true`, return `false`.
+
+
+## Summary
+
+| Step                | What it tracks                           | Purpose                            |
+|---------------------|----------------------------------------|----------------------------------|
+| `min1`              | Smallest number found so far            | Candidate for first element       |
+| `min2`              | Smallest number greater than `min1`    | Candidate for second element      |
+| Current number `num` | Check against `min1` and `min2`        | Determine if third element exists |
+
+---
